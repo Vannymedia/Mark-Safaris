@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Safaris — Tailor-Made Tanzania Safaris</title>
+<meta name="description" content="Mark Safaris designs tailor-made Tanzania safari packages across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Mark <span>Safaris</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Itineraries</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="nav-cta">Plan My Safari</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero" style="background-image:url('images/hero.svg')">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Tanzania, East Africa</span>
+    <h1>Safaris built around<br>the way you want to travel.</h1>
+    <p class="lede">Mark Safaris designs tailor-made journeys through Tanzania's national parks — from the short-grass plains of the Serengeti to the crater floor of Ngorongoro. Every itinerary is planned around your dates, budget and pace.</p>
+    <div class="hero-actions">
+      <a href="packages.html" class="btn btn-primary">Browse Itineraries</a>
+      <a href="booking.html" class="btn btn-ghost">Start Planning →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>7</b><span>Signature Parks</span></div>
+      <div class="stat"><b>100%</b><span>Tailor-Made Routes</span></div>
+      <div class="stat"><b>1–6</b><span>Guests Per Vehicle</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Popular Itineraries</span>
+        <h2>Where to go on your Tanzania safari</h2>
+      </div>
+      <p>Every package below is a starting point — dates, lodges and pace can all be adjusted once you tell us what you're after.</p>
+    </div>
+    <div class="pkg-grid" id="home-pkg-grid"></div>
+  </div>
+</section>
+
+<section style="background:var(--bush-900); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">How Booking Works</span>
+        <h2>Simple, direct, no middlemen</h2>
+      </div>
+    </div>
+    <div class="pkg-grid">
+      <div>
+        <span class="eyebrow">01</span>
+        <h3>Choose a package</h3>
+        <p>Pick a ready-made itinerary or tell us your dates and interests and we'll shape one around them.</p>
+      </div>
+      <div>
+        <span class="eyebrow">02</span>
+        <h3>Fill in your details</h3>
+        <p>Share your travel dates, group size and contact details through our booking form.</p>
+      </div>
+      <div>
+        <span class="eyebrow">03</span>
+        <h3>Pay by bank transfer</h3>
+        <p>We'll show you our NMB bank account details to secure your booking, plus a WhatsApp line for any questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Ready when you are</span>
+    <h2>Let's plan your Tanzania safari</h2>
+    <p style="max-width:520px;margin:0 auto 28px;">Message us on WhatsApp for a quick chat, or fill in the booking form to get started.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="booking.html" class="btn btn-primary">Start a Booking</a>
+      <a id="wa-cta" class="btn btn-ghost" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Mark Safaris</h4>
+        <p style="max-width:320px;">Tailor-made Tanzania safaris across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and beyond.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="packages.html">Itineraries</a></li>
+          <li><a href="booking.html">Book a Safari</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></li>
+          <li><a id="wa-footer" target="_blank" rel="noopener">WhatsApp +255 746 239 498</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© <span id="year"></span> Mark Safaris. All packages, photos and prices are indicative and can be tailored on request.</p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  renderPackageGrid("#home-pkg-grid", { limit: 6 });
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const waMsg = "Hi Mark Safaris, I'd like to ask about a safari package.";
+  document.getElementById("wa-cta").href = waLink(waMsg);
+  document.getElementById("wa-footer").href = waLink(waMsg);
+</script>
+</body>
+</html>

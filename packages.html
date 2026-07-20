@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safari Itineraries — Mark Safaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Mark <span>Safaris</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Itineraries</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="nav-cta">Plan My Safari</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header style="padding:80px 0 20px;">
+  <div class="wrap">
+    <span class="eyebrow">All Itineraries</span>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);">Tanzania national park packages</h1>
+    <p style="max-width:560px;">Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and a grand multi-park tour — every itinerary can be shortened, extended, or combined.</p>
+  </div>
+</header>
+
+<section style="padding-top:24px;">
+  <div class="wrap">
+    <div class="pkg-grid" id="all-pkg-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Mark Safaris</h4>
+        <p style="max-width:320px;">Tailor-made Tanzania safaris across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and beyond.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="packages.html">Itineraries</a></li>
+          <li><a href="booking.html">Book a Safari</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></li>
+          <li><a id="wa-footer" target="_blank" rel="noopener">WhatsApp +255 746 239 498</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© <span id="year"></span> Mark Safaris. All packages, photos and prices are indicative and can be tailored on request.</p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  renderPackageGrid("#all-pkg-grid");
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("wa-footer").href = waLink("Hi Mark Safaris, I'd like to ask about a safari package.");
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Safari Package — Mark Safaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Mark <span>Safaris</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Itineraries</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="nav-cta">Plan My Safari</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div id="detail-root"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Mark Safaris</h4>
+        <p style="max-width:320px;">Tailor-made Tanzania safaris across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and beyond.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="packages.html">Itineraries</a></li>
+          <li><a href="booking.html">Book a Safari</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></li>
+          <li><a id="wa-footer" target="_blank" rel="noopener">WhatsApp +255 746 239 498</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© <span id="year"></span> Mark Safaris. All packages, photos and prices are indicative and can be tailored on request.</p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+  const id = getQueryParam("id");
+  const pkg = findPackage(id);
+  const root = document.getElementById("detail-root");
+
+  if (!pkg) {
+    root.innerHTML = `<div class="wrap" style="padding:100px 0;text-align:center;">
+      <h2>Package not found</h2>
+      <p>That itinerary may have been renamed or removed.</p>
+      <a class="btn btn-primary" href="packages.html">Back to all itineraries</a>
+    </div>`;
+  } else {
+    document.getElementById("page-title").textContent = pkg.name + " — Mark Safaris";
+    const heroImg = pkg.image || "images/placeholder.svg";
+    root.innerHTML = `
+      <header class="detail-hero" id="detail-hero-el" style="background-image:url('${heroImg}')">
+        <div class="wrap">
+          <span class="eyebrow">${pkg.park}</span>
+          <h1 style="font-size:clamp(2rem,4vw,3.4rem);">${pkg.name}</h1>
+          <p class="lede" style="max-width:600px;">${pkg.tagline}</p>
+        </div>
+      </header>
+      <section>
+        <div class="wrap two-col">
+          <div>
+            <h2>Overview</h2>
+            <p>${pkg.description}</p>
+            <h3 style="margin-top:36px;">Highlights</h3>
+            <ul class="highlight-list">
+              ${pkg.highlights.map(h => `<li>${h}</li>`).join("")}
+            </ul>
+            <h3 style="margin-top:36px;">Day by day</h3>
+            ${trailHTML(pkg.itinerary)}
+          </div>
+          <aside class="side-card">
+            <span class="eyebrow">From</span>
+            <div class="price" style="font-size:2rem;">${fmtPrice(pkg.price)}<small style="display:block;">per person, sharing</small></div>
+            <div class="chip-list">
+              <span class="chip">${pkg.days} day${pkg.days > 1 ? "s" : ""} / ${pkg.nights} night${pkg.nights === 1 ? "" : "s"}</span>
+              <span class="chip">${pkg.groupSize}</span>
+              <span class="chip">${pkg.bestTime}</span>
+            </div>
+            <a class="btn btn-primary btn-wide" href="booking.html?package=${encodeURIComponent(pkg.id)}" style="margin-top:10px;">Book This Safari</a>
+            <a class="btn btn-ghost btn-wide" id="wa-ask" target="_blank" rel="noopener" style="margin-top:10px;">Ask on WhatsApp</a>
+          </aside>
+        </div>
+      </section>
+    `;
+    document.getElementById("wa-ask").href = waLink(`Hi Mark Safaris, I'm interested in the "${pkg.name}" package.`);
+    const probe = new Image();
+    probe.onerror = () => { document.getElementById("detail-hero-el").style.backgroundImage = "url('images/placeholder.svg')"; };
+    probe.src = heroImg;
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("wa-footer").href = waLink("Hi Mark Safaris, I'd like to ask about a safari package.");
+</script>
+</body>
+</html>

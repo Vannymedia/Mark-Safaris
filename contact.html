@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Mark Safaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Mark <span>Safaris</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Itineraries</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="booking.html" class="nav-cta">Plan My Safari</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header style="padding:64px 0 10px;">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h1 style="font-size:clamp(1.9rem,4vw,2.8rem);">Questions before you book?</h1>
+    <p style="max-width:520px;">Send us a message and we'll reply by email, or message us directly on WhatsApp for a faster answer.</p>
+  </div>
+</header>
+
+<section style="padding-top:20px;">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="booking-panel" style="max-width:none;">
+        <h3>Send a message</h3>
+        <div id="contact-status" style="margin:12px 0;"></div>
+        <form id="contact-form">
+          <div class="field-row">
+            <div class="field"><label>Full name *</label><input type="text" id="c-name" required></div>
+            <div class="field"><label>Email *</label><input type="email" id="c-email" required></div>
+          </div>
+          <div class="field"><label>Phone / WhatsApp</label><input type="tel" id="c-phone"></div>
+          <div class="field"><label>Message *</label><textarea id="c-message" required placeholder="Tell us about the trip you're planning..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-wide">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <div class="contact-card">
+        <h4>Email</h4>
+        <a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <h4>WhatsApp</h4>
+        <a id="wa-direct" target="_blank" rel="noopener">+255 746 239 498</a>
+      </div>
+      <div class="contact-card">
+        <h4>Based in</h4>
+        <p style="margin:0;">Arusha, Tanzania</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fine">© <span id="year"></span> Mark Safaris.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.getElementById("wa-direct").href = waLink("Hi Mark Safaris, I have a question about a safari.");
+
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = {
+      to_email: SITE_CONFIG.ownerEmail,
+      subject: "New website enquiry",
+      customer_name: document.getElementById("c-name").value.trim(),
+      customer_email: document.getElementById("c-email").value.trim(),
+      customer_phone: document.getElementById("c-phone").value.trim() || "—",
+      message: document.getElementById("c-message").value.trim()
+    };
+    const statusEl = document.getElementById("contact-status");
+
+    if (emailjsIsConfigured()) {
+      emailjs.init(SITE_CONFIG.emailjs.publicKey);
+      emailjs.send(SITE_CONFIG.emailjs.serviceId, SITE_CONFIG.emailjs.contactTemplateId, data)
+        .then(() => { statusEl.innerHTML = '<div class="notice ok">Message sent — we\'ll reply by email soon.</div>'; e.target.reset(); })
+        .catch(() => { statusEl.innerHTML = '<div class="notice warn">Could not send automatically — please message us on WhatsApp instead.</div>'; });
+    } else {
+      const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join("%0D%0A");
+      window.open(`mailto:${SITE_CONFIG.ownerEmail}?subject=${encodeURIComponent(data.subject)}&body=${body}`, "_blank");
+      statusEl.innerHTML = '<div class="notice info">Opening your email app to send this to us — you can also reach us on WhatsApp.</div>';
+    }
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
