@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Serengeti plains at sunset with wildebeest">
+  <defs>
+    <linearGradient id="skyS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182014"/>
+      <stop offset="50%" stop-color="#5a3a22"/>
+      <stop offset="100%" stop-color="#d9a94e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skyS)"/>
+  <circle cx="900" cy="330" r="110" fill="#f6dfa0" opacity="0.85"/>
+  <path d="M0,520 Q300,460 600,500 T1200,480 V800 H0 Z" fill="#364227" opacity="0.6"/>
+  <path d="M0,620 Q350,560 700,610 T1200,590 V800 H0 Z" fill="#212b1b" opacity="0.9"/>
+  <g fill="#12190f">
+    <path d="M120,620 L128,500 L124,500 L114,620 Z"/>
+    <ellipse cx="122" cy="470" rx="95" ry="26"/>
+    <ellipse cx="70" cy="495" rx="55" ry="15"/>
+    <ellipse cx="175" cy="495" rx="55" ry="15"/>
+  </g>
+  <g fill="#12190f" opacity="0.92">
+    <g transform="translate(430,650) scale(1.2)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(500,665) scale(0.9)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(580,645) scale(1.05)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(670,668) scale(0.85)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(760,650) scale(1.1)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(850,668) scale(0.95)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+  </g>
+  <path d="M0,740 Q300,690 600,730 T1200,715 V800 H0 Z" fill="#12190f"/>
+</svg>

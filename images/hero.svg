@@ -1,1 +1,41 @@
-
+<svg viewBox="0 0 1920 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sunset over the Serengeti plains">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12190f"/>
+      <stop offset="45%" stop-color="#3a2a1c"/>
+      <stop offset="70%" stop-color="#c1652e"/>
+      <stop offset="100%" stop-color="#e0a94e"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f6dfa0"/>
+      <stop offset="100%" stop-color="#d9a94e"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1000" fill="url(#sky)"/>
+  <circle cx="1420" cy="430" r="150" fill="url(#sun)" opacity="0.9"/>
+  <!-- distant hills -->
+  <path d="M0,640 Q400,560 800,620 T1920,600 V1000 H0 Z" fill="#364227" opacity="0.55"/>
+  <!-- mid ground -->
+  <path d="M0,760 Q500,680 1000,740 T1920,720 V1000 H0 Z" fill="#212b1b" opacity="0.85"/>
+  <!-- acacia trees -->
+  <g fill="#12190f">
+    <path d="M180,760 L188,650 L184,650 L176,760 Z"/>
+    <ellipse cx="185" cy="620" rx="90" ry="24"/>
+    <ellipse cx="140" cy="640" rx="55" ry="16"/>
+    <ellipse cx="235" cy="640" rx="55" ry="16"/>
+    <path d="M1700,780 L1706,690 L1702,690 L1696,780 Z"/>
+    <ellipse cx="1701" cy="670" rx="70" ry="20"/>
+  </g>
+  <!-- wildebeest silhouettes migrating -->
+  <g fill="#12190f" opacity="0.9">
+    <g transform="translate(600,830) scale(1.1)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(660,845) scale(0.9)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(720,825) scale(1.2)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(800,850) scale(0.85)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(870,835) scale(1.05)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(1000,845) scale(0.95)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+    <g transform="translate(1120,830) scale(1.15)"><path d="M0,0 Q10,-22 30,-24 L44,-30 L40,-20 L52,-18 L48,-8 L58,0 L44,2 L44,14 L34,14 L34,2 L10,2 L6,14 L-4,14 L0,0 Z"/></g>
+  </g>
+  <!-- foreground grass -->
+  <path d="M0,920 Q480,860 960,910 T1920,900 V1000 H0 Z" fill="#12190f"/>
+</svg>

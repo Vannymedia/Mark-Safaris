@@ -1,1 +1,27 @@
-
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Baobab tree and elephant in Tarangire National Park">
+  <defs>
+    <linearGradient id="skyT" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182014"/>
+      <stop offset="55%" stop-color="#6b4a26"/>
+      <stop offset="100%" stop-color="#d9a94e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skyT)"/>
+  <circle cx="950" cy="260" r="90" fill="#f6dfa0" opacity="0.85"/>
+  <path d="M0,540 Q300,480 600,520 T1200,500 V800 H0 Z" fill="#364227" opacity="0.55"/>
+  <path d="M0,640 Q300,600 600,630 T1200,610 V800 H0 Z" fill="#212b1b" opacity="0.9"/>
+  <!-- baobab tree -->
+  <g fill="#12190f">
+    <path d="M560,640 C540,560 545,470 590,420 C570,400 575,360 610,350 C605,320 640,290 670,320 C700,290 735,320 725,355 C760,360 765,405 735,425 C775,470 770,555 730,640 C700,610 690,560 700,510 C670,540 630,540 605,510 C610,560 595,610 560,640 Z"/>
+    <ellipse cx="645" cy="330" rx="12" ry="20"/>
+    <ellipse cx="600" cy="360" rx="10" ry="16"/>
+    <ellipse cx="690" cy="365" rx="10" ry="16"/>
+  </g>
+  <!-- elephant -->
+  <g fill="#12190f" transform="translate(280,600) scale(1.3)">
+    <path d="M0,0 C-10,-10 -14,-28 -6,-42 C0,-52 12,-56 22,-52 L60,-52 C74,-52 84,-42 84,-30 L84,-6 C84,4 76,10 68,10 L64,10 L64,26 L54,26 L54,10 L34,10 L34,26 L24,26 L24,10 L10,10 C4,10 -2,6 0,0 Z"/>
+    <path d="M22,-52 C10,-52 -2,-46 -8,-36 C-14,-26 -18,-14 -16,-2 C-20,-2 -26,2 -26,10 L-32,10" stroke="#12190f" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <circle cx="26" cy="-40" r="3" fill="#e0a94e"/>
+  </g>
+  <path d="M0,740 Q300,700 600,725 T1200,710 V800 H0 Z" fill="#12190f"/>
+</svg>
