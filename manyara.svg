@@ -1,0 +1,32 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flamingos on the shore of Lake Manyara">
+  <defs>
+    <linearGradient id="skyM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12190f"/>
+      <stop offset="55%" stop-color="#2f3f28"/>
+      <stop offset="100%" stop-color="#c1652e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skyM)"/>
+  <circle cx="850" cy="260" r="80" fill="#e0a94e" opacity="0.8"/>
+  <!-- escarpment -->
+  <path d="M0,300 Q250,220 600,260 T1200,240 V0 H0 Z" fill="#182014"/>
+  <!-- forest edge -->
+  <path d="M0,420 Q300,360 600,400 T1200,380 V300 H0 Z" fill="#212b1b" opacity="0.9"/>
+  <!-- lake -->
+  <rect x="0" y="420" width="1200" height="220" fill="#3a4a2f" opacity="0.6"/>
+  <rect x="0" y="420" width="1200" height="6" fill="#8a9a74" opacity="0.5"/>
+  <!-- flamingos -->
+  <g fill="#12190f" opacity="0.9">
+    <g transform="translate(300,540)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+    <g transform="translate(340,555) scale(0.85)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+    <g transform="translate(380,535) scale(1.05)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+    <g transform="translate(760,548) scale(0.95)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+    <g transform="translate(800,530)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+  </g>
+  <!-- reflection -->
+  <g fill="#12190f" opacity="0.25" transform="translate(0,656) scale(1,-1) translate(0,-576)">
+    <g transform="translate(300,540)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+    <g transform="translate(380,535) scale(1.05)"><path d="M0,40 L2,10 Q-6,0 2,-8 Q10,-14 16,-6 L24,-16 L20,-6 Q26,-2 20,4 L14,4 L14,40 Z"/></g>
+  </g>
+  <path d="M0,700 Q300,660 600,690 T1200,670 V800 H0 Z" fill="#12190f"/>
+</svg>

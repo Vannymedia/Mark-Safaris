@@ -1,0 +1,27 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skyline montage of Tanzania's northern safari circuit">
+  <defs>
+    <linearGradient id="skyC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12190f"/>
+      <stop offset="55%" stop-color="#3a2a1c"/>
+      <stop offset="100%" stop-color="#d9a94e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skyC)"/>
+  <circle cx="1000" cy="260" r="100" fill="#f6dfa0" opacity="0.85"/>
+  <!-- distant mountain (Kilimanjaro-esque) -->
+  <path d="M700,420 L830,220 L880,300 L980,150 L1120,420 Z" fill="#212b1b" opacity="0.85"/>
+  <path d="M960,190 L980,150 L1000,190 Z" fill="#f2ecd9" opacity="0.8"/>
+  <!-- crater arc -->
+  <path d="M60,440 Q260,340 500,400 L500,470 Q260,410 60,500 Z" fill="#364227" opacity="0.7"/>
+  <path d="M0,560 Q300,500 600,540 T1200,520 V800 H0 Z" fill="#212b1b" opacity="0.9"/>
+  <!-- baobab -->
+  <g fill="#12190f">
+    <path d="M180,660 C168,600 172,545 200,515 C190,502 194,478 216,472 C212,452 234,436 252,452 C270,436 292,452 286,474 C308,478 312,502 292,514 C314,545 310,600 288,660 C270,638 264,600 270,568 C252,586 228,586 214,568 C218,600 208,638 180,660 Z"/>
+  </g>
+  <!-- acacia -->
+  <g fill="#12190f">
+    <path d="M1010,660 L1016,570 L1012,570 L1006,660 Z"/>
+    <ellipse cx="1011" cy="550" rx="80" ry="22"/>
+  </g>
+  <path d="M0,740 Q300,700 600,725 T1200,710 V800 H0 Z" fill="#12190f"/>
+</svg>

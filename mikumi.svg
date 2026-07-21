@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Giraffe on the Mkata floodplain in Mikumi National Park">
+  <defs>
+    <linearGradient id="skyMi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#182014"/>
+      <stop offset="55%" stop-color="#4a3a22"/>
+      <stop offset="100%" stop-color="#d9a94e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#skyMi)"/>
+  <circle cx="380" cy="280" r="95" fill="#f6dfa0" opacity="0.85"/>
+  <path d="M0,540 Q300,480 600,520 T1200,500 V800 H0 Z" fill="#364227" opacity="0.55"/>
+  <path d="M0,640 Q300,600 600,630 T1200,610 V800 H0 Z" fill="#212b1b" opacity="0.9"/>
+  <g fill="#12190f">
+    <path d="M1020,640 L1028,520 L1024,520 L1016,640 Z"/>
+    <ellipse cx="1022" cy="490" rx="80" ry="22"/>
+  </g>
+  <!-- giraffe -->
+  <g fill="#12190f" transform="translate(650,430) scale(1.15)">
+    <path d="M0,210 L6,110 L-2,60 L4,0 C4,-14 14,-24 22,-16 C30,-8 26,4 20,10 L26,60 L34,112 L40,210 L28,210 L22,120 L14,120 L10,210 Z"/>
+    <path d="M4,0 L-6,-16" stroke="#12190f" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="6" cy="-20" r="6"/>
+  </g>
+  <path d="M0,740 Q300,700 600,725 T1200,710 V800 H0 Z" fill="#12190f"/>
+</svg>
