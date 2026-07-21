@@ -7,129 +7,465 @@
 <meta name="description" content="Mark Safaris designs tailor-made Tanzania safari packages across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root {
+  --bush-950: #12190f; --bush-900: #182014; --bush-800: #212b1b; --bush-700: #364227;
+  --sage: #8a9a74; --parchment: #f2ecd9; --parchment-dim: #cfc9b4;
+  --clay: #c1652e; --clay-bright: #e07d3e; --gold: #d9a94e; --line: rgba(242,236,217,0.14);
+  --font-display: "Fraunces", Georgia, serif; --font-body: "Work Sans", -apple-system, sans-serif; --font-mono: "IBM Plex Mono", monospace;
+  --radius: 4px; --container: 1180px;
+}
+* { box-sizing: border-box; } html { scroll-behavior: smooth; }
+body { margin:0; background:var(--bush-950); color:var(--parchment); font-family:var(--font-body); line-height:1.55; -webkit-font-smoothing:antialiased; }
+img { max-width:100%; display:block; } a { color:inherit; }
+.wrap { max-width:var(--container); margin:0 auto; padding:0 28px; }
+h1,h2,h3,h4 { font-family:var(--font-display); font-weight:600; line-height:1.12; margin:0 0 .5em; color:var(--parchment); }
+h1 { font-size:clamp(2.4rem,5vw,4.2rem); font-weight:500; letter-spacing:-.01em; }
+h2 { font-size:clamp(1.7rem,3vw,2.5rem); } h3 { font-size:1.3rem; }
+p { margin:0 0 1em; color:var(--parchment-dim); }
+.eyebrow { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); display:inline-block; margin-bottom:.9em; }
+.site-nav { position:sticky; top:0; z-index:50; background:rgba(18,25,15,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.site-nav .wrap { display:flex; align-items:center; justify-content:space-between; height:72px; }
+.brand { font-family:var(--font-display); font-size:1.35rem; text-decoration:none; letter-spacing:.01em; }
+.brand span { color:var(--clay-bright); }
+.nav-links { display:flex; gap:30px; list-style:none; margin:0; padding:0; align-items:center; }
+.nav-links a { text-decoration:none; font-size:.92rem; color:var(--parchment-dim); transition:color .15s; }
+.nav-links a:hover, .nav-links a.active { color:var(--parchment); }
+.nav-cta { font-family:var(--font-mono); font-size:.78rem; letter-spacing:.04em; background:var(--clay); color:var(--parchment); padding:10px 18px; border-radius:var(--radius); text-decoration:none; text-transform:uppercase; }
+.nav-cta:hover { background:var(--clay-bright); }
+.nav-toggle { display:none; background:none; border:none; color:var(--parchment); font-size:1.6rem; cursor:pointer; }
+@media (max-width:860px){ .nav-links{ position:fixed; inset:72px 0 0 0; background:var(--bush-950); flex-direction:column; padding:30px 28px; gap:22px; transform:translateX(100%); transition:transform .25s;} .nav-links.open{transform:translateX(0);} .nav-toggle{display:block;} }
+.btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:600; font-size:.95rem; padding:13px 26px; border-radius:var(--radius); text-decoration:none; border:1px solid transparent; cursor:pointer; transition:all .15s; }
+.btn-primary { background:var(--clay); color:var(--parchment); } .btn-primary:hover{background:var(--clay-bright);}
+.btn-ghost { background:transparent; color:var(--parchment); border-color:var(--line); } .btn-ghost:hover{border-color:var(--sage);}
+.btn-gold { background:var(--gold); color:var(--bush-950); } .btn-gold:hover{filter:brightness(1.08);}
+.btn-wide { width:100%; justify-content:center; } .btn[disabled]{opacity:.5; cursor:not-allowed;}
+.hero { position:relative; min-height:88vh; display:flex; align-items:flex-end; background-size:cover; background-position:center; border-bottom:1px solid var(--line); }
+.hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,25,15,.15) 0%, rgba(18,25,15,.55) 55%, rgba(18,25,15,.96) 100%); }
+.hero-inner { position:relative; z-index:2; padding-bottom:72px; max-width:780px; }
+.hero .lede { font-size:1.15rem; color:var(--parchment); max-width:560px; }
+.hero-actions { display:flex; gap:16px; margin-top:28px; flex-wrap:wrap; }
+.hero-stats { display:flex; gap:40px; margin-top:56px; flex-wrap:wrap; }
+.hero-stats .stat b { display:block; font-family:var(--font-mono); font-size:1.6rem; color:var(--gold); }
+.hero-stats .stat span { font-size:.8rem; color:var(--parchment-dim); text-transform:uppercase; letter-spacing:.06em; }
+section { padding:96px 0; }
+.section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:48px; flex-wrap:wrap; }
+.section-head p { max-width:480px; margin:0; }
+.pkg-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:28px; }
+.pkg-card { background:var(--bush-900); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; text-decoration:none; display:flex; flex-direction:column; transition:transform .2s, border-color .2s; }
+.pkg-card:hover { transform:translateY(-4px); border-color:var(--sage); }
+.pkg-card .thumb { height:220px; overflow:hidden; position:relative; background:var(--bush-800); }
+.pkg-card .thumb img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+.pkg-card:hover .thumb img { transform:scale(1.06); }
+.pkg-card .park-tag { position:absolute; top:14px; left:14px; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; background:rgba(18,25,15,.75); color:var(--gold); padding:6px 10px; border-radius:var(--radius); z-index:2; }
+.pkg-card .body { padding:22px 22px 24px; flex:1; display:flex; flex-direction:column; }
+.pkg-card h3 { margin-bottom:6px; } .pkg-card .tagline { font-size:.9rem; color:var(--parchment-dim); flex:1; }
+.pkg-card .meta-row { display:flex; justify-content:space-between; align-items:center; margin-top:18px; padding-top:16px; border-top:1px solid var(--line); }
+.price { font-family:var(--font-mono); color:var(--gold); font-size:1.15rem; } .price small{color:var(--parchment-dim); font-size:.7rem;}
+.days-badge { font-family:var(--font-mono); font-size:.78rem; color:var(--parchment-dim); }
+.trail { position:relative; padding-left:46px; }
+.trail::before { content:""; position:absolute; left:13px; top:10px; bottom:10px; width:1px; background-image:linear-gradient(var(--sage) 60%, transparent 0%); background-size:1px 10px; background-repeat:repeat-y; }
+.trail-day { position:relative; margin-bottom:34px; }
+.trail-day::before { content:""; position:absolute; left:-46px; top:4px; width:26px; height:26px; border-radius:50%; background:var(--bush-950); border:1px solid var(--gold); }
+.trail-day .num { position:absolute; left:-40px; top:8px; width:14px; text-align:center; font-family:var(--font-mono); font-size:.68rem; color:var(--gold); }
+.trail-day h4 { margin-bottom:4px; font-size:1.05rem; } .trail-day p { margin:0; font-size:.92rem; }
+.field { margin-bottom:20px; }
+.field label { display:block; font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--parchment-dim); margin-bottom:8px; font-family:var(--font-mono); }
+.field input, .field select, .field textarea { width:100%; background:var(--bush-800); border:1px solid var(--line); color:var(--parchment); padding:13px 14px; border-radius:var(--radius); font-family:var(--font-body); font-size:.96rem; }
+.field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--gold); }
+.field textarea { min-height:110px; resize:vertical; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:640px){ .field-row{grid-template-columns:1fr;} }
+.steps-nav { display:flex; gap:10px; margin-bottom:44px; flex-wrap:wrap; }
+.steps-nav .step { font-family:var(--font-mono); font-size:.75rem; letter-spacing:.04em; text-transform:uppercase; padding:9px 14px; border-radius:var(--radius); border:1px solid var(--line); color:var(--parchment-dim); }
+.steps-nav .step.active { border-color:var(--gold); color:var(--gold); } .steps-nav .step.done { border-color:var(--sage); color:var(--sage); }
+.booking-panel { background:var(--bush-900); border:1px solid var(--line); border-radius:var(--radius); padding:40px; max-width:680px; }
+@media (max-width:640px){ .booking-panel{padding:26px 20px;} }
+.summary-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:.94rem; }
+.summary-row:last-child { border-bottom:none; } .summary-row span:first-child { color:var(--parchment-dim); }
+.bank-card { background:var(--bush-800); border:1px solid var(--gold); border-radius:var(--radius); padding:28px; margin:24px 0; }
+.bank-card .bank-row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px dashed var(--line); font-family:var(--font-mono); font-size:.92rem; gap:12px; }
+.bank-card .bank-row:last-child { border-bottom:none; }
+.bank-card .bank-row span:first-child { color:var(--parchment-dim); text-transform:uppercase; font-size:.72rem; letter-spacing:.05em; }
+.bank-card .bank-row span:last-child { color:var(--parchment); text-align:right; word-break:break-word; }
+.notice { border-radius:var(--radius); padding:14px 18px; font-size:.88rem; margin-bottom:20px; border:1px solid var(--line); }
+.notice.info { background:rgba(217,169,78,.08); border-color:var(--gold); color:var(--gold); }
+.notice.ok { background:rgba(138,154,116,.12); border-color:var(--sage); color:var(--sage); }
+.notice.warn { background:rgba(193,101,46,.12); border-color:var(--clay); color:var(--clay-bright); }
+footer { border-top:1px solid var(--line); padding:56px 0 32px; }
+footer .cols { display:grid; grid-template-columns:2fr 1fr 1fr; gap:32px; margin-bottom:40px; }
+@media (max-width:720px){ footer .cols{grid-template-columns:1fr;} }
+footer h4 { font-size:.9rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); font-family:var(--font-mono); }
+footer ul { list-style:none; padding:0; margin:0; } footer li { margin-bottom:10px; }
+footer a { text-decoration:none; color:var(--parchment-dim); font-size:.92rem; } footer a:hover{color:var(--parchment);}
+.fine { font-size:.8rem; color:var(--parchment-dim); border-top:1px solid var(--line); padding-top:24px; }
+.admin-table { width:100%; border-collapse:collapse; margin-top:20px; }
+.admin-table th, .admin-table td { text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); font-size:.88rem; vertical-align:top; }
+.admin-table th { font-family:var(--font-mono); text-transform:uppercase; font-size:.72rem; color:var(--parchment-dim); }
+.admin-thumb { width:70px; height:50px; object-fit:cover; border-radius:2px; background:var(--bush-800); }
+.pill { display:inline-block; padding:4px 10px; font-size:.7rem; border-radius:20px; font-family:var(--font-mono); }
+.pill.gold { background:rgba(217,169,78,.15); color:var(--gold); }
+.lock-screen { max-width:380px; margin:120px auto; text-align:center; }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+@media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+.contact-card { background:var(--bush-900); border:1px solid var(--line); padding:26px; border-radius:var(--radius); margin-bottom:16px; }
+.contact-card h4 { margin-bottom:4px; } .contact-card a { color:var(--gold); text-decoration:none; }
+.detail-hero { height:60vh; background-size:cover; background-position:center; position:relative; background-color:var(--bush-900); }
+.detail-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,25,15,.1), rgba(18,25,15,.97)); }
+.detail-hero .wrap { position:relative; z-index:2; height:100%; display:flex; align-items:flex-end; padding-bottom:40px; }
+.two-col { display:grid; grid-template-columns:1.6fr 1fr; gap:56px; align-items:start; }
+@media (max-width:900px){ .two-col{grid-template-columns:1fr;} }
+.side-card { background:var(--bush-900); border:1px solid var(--line); border-radius:var(--radius); padding:26px; position:sticky; top:96px; }
+.chip-list { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+.chip { font-family:var(--font-mono); font-size:.72rem; background:var(--bush-800); border:1px solid var(--line); padding:6px 10px; border-radius:20px; color:var(--parchment-dim); }
+ul.highlight-list { padding-left:20px; margin:0 0 24px; } ul.highlight-list li { margin-bottom:8px; color:var(--parchment-dim); }
+.view { animation: fadein .25s ease; } @keyframes fadein { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+</style>
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="brand">Mark <span>Safaris</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="packages.html">Itineraries</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="booking.html" class="nav-cta">Plan My Safari</a></li>
+    <a href="#/" class="brand">Mark <span>Safaris</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#/" data-route="/">Home</a></li>
+      <li><a href="#/packages" data-route="/packages">Itineraries</a></li>
+      <li><a href="#/contact" data-route="/contact">Contact</a></li>
+      <li><a href="#/booking" class="nav-cta">Plan My Safari</a></li>
     </ul>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
   </div>
 </nav>
 
-<header class="hero" style="background-image:url('images/hero.svg')">
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Tanzania, East Africa</span>
-    <h1>Safaris built around<br>the way you want to travel.</h1>
-    <p class="lede">Mark Safaris designs tailor-made journeys through Tanzania's national parks — from the short-grass plains of the Serengeti to the crater floor of Ngorongoro. Every itinerary is planned around your dates, budget and pace.</p>
-    <div class="hero-actions">
-      <a href="packages.html" class="btn btn-primary">Browse Itineraries</a>
-      <a href="booking.html" class="btn btn-ghost">Start Planning →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><b>7</b><span>Signature Parks</span></div>
-      <div class="stat"><b>100%</b><span>Tailor-Made Routes</span></div>
-      <div class="stat"><b>1–6</b><span>Guests Per Vehicle</span></div>
-    </div>
-  </div>
-</header>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Popular Itineraries</span>
-        <h2>Where to go on your Tanzania safari</h2>
-      </div>
-      <p>Every package below is a starting point — dates, lodges and pace can all be adjusted once you tell us what you're after.</p>
-    </div>
-    <div class="pkg-grid" id="home-pkg-grid"></div>
-  </div>
-</section>
-
-<section style="background:var(--bush-900); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">How Booking Works</span>
-        <h2>Simple, direct, no middlemen</h2>
-      </div>
-    </div>
-    <div class="pkg-grid">
-      <div>
-        <span class="eyebrow">01</span>
-        <h3>Choose a package</h3>
-        <p>Pick a ready-made itinerary or tell us your dates and interests and we'll shape one around them.</p>
-      </div>
-      <div>
-        <span class="eyebrow">02</span>
-        <h3>Fill in your details</h3>
-        <p>Share your travel dates, group size and contact details through our booking form.</p>
-      </div>
-      <div>
-        <span class="eyebrow">03</span>
-        <h3>Pay by bank transfer</h3>
-        <p>We'll show you our NMB bank account details to secure your booking, plus a WhatsApp line for any questions.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap" style="text-align:center;">
-    <span class="eyebrow">Ready when you are</span>
-    <h2>Let's plan your Tanzania safari</h2>
-    <p style="max-width:520px;margin:0 auto 28px;">Message us on WhatsApp for a quick chat, or fill in the booking form to get started.</p>
-    <div class="hero-actions" style="justify-content:center;">
-      <a href="booking.html" class="btn btn-primary">Start a Booking</a>
-      <a id="wa-cta" class="btn btn-ghost" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-  </div>
-</section>
+<main id="app"></main>
 
 <footer>
   <div class="wrap">
     <div class="cols">
-      <div>
-        <h4>Mark Safaris</h4>
-        <p style="max-width:320px;">Tailor-made Tanzania safaris across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and beyond.</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="packages.html">Itineraries</a></li>
-          <li><a href="booking.html">Book a Safari</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Get in touch</h4>
-        <ul>
-          <li><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></li>
-          <li><a id="wa-footer" target="_blank" rel="noopener">WhatsApp +255 746 239 498</a></li>
-        </ul>
-      </div>
+      <div><h4>Mark Safaris</h4><p style="max-width:320px;">Tailor-made Tanzania safaris across the Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and beyond.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="#/packages">Itineraries</a></li><li><a href="#/booking">Book a Safari</a></li><li><a href="#/contact">Contact</a></li></ul></div>
+      <div><h4>Get in touch</h4><ul><li><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></li><li><a id="wa-footer" target="_blank" rel="noopener">WhatsApp +255 746 239 498</a></li></ul></div>
     </div>
     <p class="fine">© <span id="year"></span> Mark Safaris. All packages, photos and prices are indicative and can be tailored on request.</p>
   </div>
 </footer>
 
-<script src="js/config.js"></script>
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  renderPackageGrid("#home-pkg-grid", { limit: 6 });
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const waMsg = "Hi Mark Safaris, I'd like to ask about a safari package.";
-  document.getElementById("wa-cta").href = waLink(waMsg);
-  document.getElementById("wa-footer").href = waLink(waMsg);
+/* ---- built-in fallback image (used only if a jpg/png is missing) ---- */
+const PLACEHOLDER_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="#212b1b"/><circle cx="600" cy="300" r="90" fill="#d9a94e" opacity="0.6"/><path d="M0,560 Q300,500 600,540 T1200,520 V800 H0 Z" fill="#182014"/><text x="600" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#f2ecd9" opacity="0.85">Mark Safaris</text></svg>';
+const PLACEHOLDER_IMG = "data:image/svg+xml," + encodeURIComponent(PLACEHOLDER_SVG);
+function onImgErr() { return "this.onerror=null;this.src='" + PLACEHOLDER_IMG + "';"; }
+
+const SITE_CONFIG = {
+  ownerEmail: "safarismark@gmail.com",
+  whatsappNumber: "255746239498",
+  bank: { bankName: "National Microfinance Bank PLC (NMB)", accountName: "MAKENGO JUSTINE LEONARD", swiftCode: "NMIBTZTZ", routingNumber: "NMIBTZTZ", city: "ARUSHA" },
+  emailjs: { publicKey: "YOUR_EMAILJS_PUBLIC_KEY", serviceId: "YOUR_EMAILJS_SERVICE_ID", bookingTemplateId: "YOUR_EMAILJS_BOOKING_TEMPLATE_ID", contactTemplateId: "YOUR_EMAILJS_CONTACT_TEMPLATE_ID" },
+  adminPassword: "safari2026" // change this before launch
+};
+function emailjsIsConfigured(){ const c=SITE_CONFIG.emailjs; return c.publicKey && !c.publicKey.startsWith("YOUR_") && c.serviceId && !c.serviceId.startsWith("YOUR_"); }
+function waLink(msg){ return "https://wa.me/"+SITE_CONFIG.whatsappNumber+"?text="+encodeURIComponent(msg); }
+function fmtPrice(n){ return "$"+Number(n).toLocaleString("en-US"); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+/* ---- package data: images point at plain files you drop into /images ---- */
+const BASE_PACKAGES = [
+  { id:"serengeti-migration", park:"Serengeti National Park", name:"Serengeti Migration Explorer", tagline:"Endless plains and the greatest wildlife show on Earth", days:4, nights:3, price:1450, groupSize:"1–6 travelers", bestTime:"June – October (migration), Dec – Mar (calving)", image:"images/serengeti.jpg", thumb:"images/serengeti.jpg",
+    description:"The Serengeti is Tanzania's flagship park — endless golden plains, acacia-dotted horizons, and the single largest concentration of plains game left on the planet. This itinerary is timed around the great wildebeest migration and gives you long, unhurried game drives with a private guide, tracking predators and following the herds across the short-grass plains.",
+    highlights:["Big cats: lion, leopard and cheetah on the central plains","Great Migration river crossings (seasonal)","Hot air balloon safari option at dawn","Maasai cultural visit near the park boundary"],
+    itinerary:[{day:1,title:"Arusha to Serengeti",text:"Fly or drive from Arusha into the Serengeti, with a game drive en route as you enter the park in the afternoon."},{day:2,title:"Central Serengeti",text:"Full day game drive across the Seronera plains, prime territory for lion and leopard sightings."},{day:3,title:"Following the herds",text:"Track the migration (seasonal) or explore the western corridor and northern plains with a picnic lunch in the bush."},{day:4,title:"Morning drive & departure",text:"Sunrise game drive, then transfer back to Arusha or on to your next park."}] },
+  { id:"ngorongoro-crater", park:"Ngorongoro Conservation Area", name:"Ngorongoro Crater Discovery", tagline:"A natural amphitheater holding one of Africa's densest wildlife populations", days:2, nights:1, price:780, groupSize:"1–6 travelers", bestTime:"Year-round", image:"images/ngorongoro.jpg", thumb:"images/ngorongoro.jpg",
+    description:"Ngorongoro Crater is a collapsed volcanic caldera whose floor holds around 25,000 large animals year-round, including one of Tanzania's best chances of spotting black rhino. A single descent onto the crater floor delivers an extraordinary concentration of wildlife against a dramatic backdrop of 600-metre walls.",
+    highlights:["Black rhino, lion, elephant and flamingo-lined soda lakes","Crater floor game drive with packed bush breakfast","Stay on the crater rim with panoramic views","Optional Maasai boma visit"],
+    itinerary:[{day:1,title:"Arusha to Ngorongoro rim",text:"Drive up the Rift Valley escarpment to your lodge on the crater rim, with an afternoon viewpoint stop."},{day:2,title:"Crater floor & departure",text:"Descend at sunrise for a full morning game drive on the crater floor, then climb back out and transfer onward."}] },
+  { id:"tarangire-baobabs", park:"Tarangire National Park", name:"Tarangire Elephant & Baobab Trail", tagline:"Ancient baobabs and Tanzania's largest elephant herds", days:3, nights:2, price:990, groupSize:"1–6 travelers", bestTime:"June – October (dry season herds)", image:"images/tarangire.jpg", thumb:"images/tarangire.jpg",
+    description:"Tarangire is famous for its towering baobab trees and, in the dry season, herds of several hundred elephants gathering along the Tarangire River. It's quieter than the northern circuit's headline parks, making it a favourite for travelers who want space along with big game.",
+    highlights:["Some of Africa's largest elephant herds (dry season)","Iconic baobab-studded landscapes","Tree-climbing lions and abundant birdlife","Optional walking safari with an armed ranger"],
+    itinerary:[{day:1,title:"Arrival & afternoon drive",text:"Arrive at Tarangire, check in, and head straight into the park for an afternoon game drive along the river."},{day:2,title:"Full day in the park",text:"A full day exploring the swamps and baobab woodlands, with a bush picnic lunch."},{day:3,title:"Morning drive & departure",text:"Final sunrise drive, then transfer out of the park."}] },
+  { id:"manyara-treetops", park:"Lake Manyara National Park", name:"Lake Manyara Treetop & Flamingo Tour", tagline:"Tree-climbing lions, flamingo shorelines and a rift valley backdrop", days:1, nights:0, price:320, groupSize:"1–6 travelers", bestTime:"Year-round", image:"images/manyara.jpg", thumb:"images/manyara.jpg",
+    description:"Tucked beneath the Rift Valley escarpment, Lake Manyara packs groundwater forest, acacia woodland and an alkaline lake into a compact park. It's known for its unusual tree-climbing lions, large baboon troops, and — when water levels are right — vast flocks of flamingos along the shoreline.",
+    highlights:["Tree-climbing lions in the mahogany forest","Flamingos and pelicans on the lake shore","Treetop canopy walkway","Easily combined as a day trip with Ngorongoro or Tarangire"],
+    itinerary:[{day:1,title:"Full day game drive",text:"A full day exploring the forest, hippo pool and lake shore, ideal as a stand-alone day trip or added on to a longer safari."}] },
+  { id:"mikumi-getaway", park:"Mikumi National Park", name:"Mikumi Weekend Getaway", tagline:"The closest big-game park to Dar es Salaam", days:2, nights:1, price:540, groupSize:"1–6 travelers", bestTime:"June – October", image:"images/mikumi.jpg", thumb:"images/mikumi.jpg",
+    description:"Mikumi sits just a few hours from Dar es Salaam, making it the easiest short safari on the Tanzanian coast. Its open Mkata floodplain is reminiscent of the Serengeti on a smaller scale, with reliable sightings of lion, giraffe, zebra, elephant and buffalo.",
+    highlights:["Easiest safari to reach from Dar es Salaam","Mkata floodplain game viewing","Giraffe, zebra, elephant, buffalo and lion","Great for a short weekend trip"],
+    itinerary:[{day:1,title:"Depart Dar & afternoon drive",text:"Morning departure from Dar es Salaam, arriving in time for an afternoon game drive on the Mkata floodplain."},{day:2,title:"Morning drive & return",text:"Sunrise game drive, then return to Dar es Salaam by the afternoon."}] },
+  { id:"ruaha-wild-south", park:"Ruaha National Park", name:"Ruaha Wild South Safari", tagline:"Tanzania's largest park — vast baobab wilderness with few other visitors", days:4, nights:3, price:1620, groupSize:"1–6 travelers", bestTime:"June – November", image:"images/ruaha.jpg", thumb:"images/ruaha.jpg",
+    description:"Ruaha is Tanzania's largest national park and one of East Africa's last true wilderness areas, with huge prides of lion, one of the region's biggest elephant populations, and a landscape of rolling hills and ancient baobabs cut by the Great Ruaha River. It sees a fraction of the visitors of the northern circuit.",
+    highlights:["Large lion prides and healthy leopard population","One of East Africa's biggest elephant populations","Dramatic baobab-studded scenery","Remote, uncrowded game drives"],
+    itinerary:[{day:1,title:"Fly into Ruaha",text:"Fly into Ruaha, transfer to camp, afternoon game drive along the Great Ruaha River."},{day:2,title:"Full day exploring",text:"Full day game drive across the baobab plains and river circuits."},{day:3,title:"Deeper into the park",text:"Explore further-flung areas of the park for a quieter, more remote experience."},{day:4,title:"Morning drive & departure",text:"Final game drive before flying out."}] },
+  { id:"northern-circuit-grand-tour", park:"Multi-park", name:"Grand Northern Circuit", tagline:"Serengeti, Ngorongoro and Tarangire in one unforgettable journey", days:7, nights:6, price:2890, groupSize:"1–6 travelers", bestTime:"June – October", image:"images/northern-circuit.jpg", thumb:"images/northern-circuit.jpg",
+    description:"The complete northern circuit: elephant herds and baobabs in Tarangire, the wildlife-dense floor of Ngorongoro Crater, and multiple days chasing the drama of the Serengeti plains. This is the classic first-time Tanzania safari, paced to give each park the time it deserves.",
+    highlights:["All three flagship northern parks in one trip","Private guide and vehicle throughout","Balanced pacing — no single-night rushes","Fully customizable lodge and camp tier"],
+    itinerary:[{day:1,title:"Arusha to Tarangire",text:"Depart Arusha and head into Tarangire for an afternoon game drive."},{day:2,title:"Tarangire full day",text:"A full day among the baobabs and elephant herds."},{day:3,title:"On to Ngorongoro",text:"Transfer to the Ngorongoro highlands, afternoon at leisure with crater rim views."},{day:4,title:"Crater floor",text:"Full morning descent into the crater, afternoon transfer to the Serengeti."},{day:5,title:"Serengeti",text:"Full day game drive across the central Serengeti plains."},{day:6,title:"Serengeti",text:"Second full day in the Serengeti, tracking predators or the migration herds."},{day:7,title:"Departure",text:"Final morning drive, then transfer back to Arusha for your onward flight."}] }
+];
+
+function getPackages(){ try{ const raw=localStorage.getItem("markSafarisPackages"); if(raw){ const s=JSON.parse(raw); if(Array.isArray(s)&&s.length) return s; } }catch(e){} return BASE_PACKAGES; }
+function savePackages(list){ localStorage.setItem("markSafarisPackages", JSON.stringify(list)); }
+function findPackage(id){ return getPackages().find(p=>p.id===id); }
+
+function pkgCardHTML(p){
+  return `<a class="pkg-card" href="#/package/${encodeURIComponent(p.id)}">
+    <div class="thumb"><span class="park-tag">${esc(p.park)}</span>
+      <img src="${p.thumb||p.image}" alt="${esc(p.name)}" loading="lazy" onerror="${onImgErr()}"></div>
+    <div class="body"><h3>${esc(p.name)}</h3><p class="tagline">${esc(p.tagline)}</p>
+      <div class="meta-row"><span class="days-badge">${p.days} day${p.days>1?"s":""}</span><span class="price">${fmtPrice(p.price)}<br><small>per person</small></span></div>
+    </div></a>`;
+}
+function trailHTML(itinerary){
+  return `<div class="trail">`+itinerary.map(d=>`<div class="trail-day"><span class="num">${String(d.day).padStart(2,"0")}</span><h4>Day ${d.day} — ${esc(d.title)}</h4><p>${esc(d.text)}</p></div>`).join("")+`</div>`;
+}
+function footerBits(){ document.getElementById("year").textContent=new Date().getFullYear(); document.getElementById("wa-footer").href=waLink("Hi Mark Safaris, I'd like to ask about a safari package."); }
+
+function parseRoute(){ const hash=location.hash.replace(/^#/,"")||"/"; const parts=hash.split("/").filter(Boolean); return {path:"/"+(parts[0]||""), parts}; }
+
+function render(){
+  const {path,parts}=parseRoute(); const app=document.getElementById("app"); window.scrollTo({top:0});
+  document.querySelectorAll("#nav-links a[data-route]").forEach(a=>a.classList.toggle("active", a.getAttribute("data-route")===path));
+  document.getElementById("nav-links").classList.remove("open");
+  if(path==="/"||path==="") { app.innerHTML=viewHome(); bindHome(); }
+  else if(path==="/packages") { app.innerHTML=viewPackages(); }
+  else if(path==="/package") { const id=parts[1]; app.innerHTML=viewPackageDetail(id); bindPackageDetail(id); }
+  else if(path==="/booking") { app.innerHTML=viewBooking(); bindBooking(parts[1]); }
+  else if(path==="/contact") { app.innerHTML=viewContact(); bindContact(); }
+  else if(path==="/admin") { app.innerHTML=viewAdmin(); bindAdmin(); }
+  else { app.innerHTML=`<div class="wrap" style="padding:120px 0;text-align:center;"><h2>Page not found</h2><a class="btn btn-primary" href="#/">Back home</a></div>`; }
+  footerBits();
+}
+
+function viewHome(){
+  return `<header class="hero" style="background-image:url('images/hero.jpg')">
+    <div class="wrap hero-inner"><span class="eyebrow">Tanzania, East Africa</span>
+      <h1>Safaris built around<br>the way you want to travel.</h1>
+      <p class="lede">Mark Safaris designs tailor-made journeys through Tanzania's national parks — from the short-grass plains of the Serengeti to the crater floor of Ngorongoro. Every itinerary is planned around your dates, budget and pace.</p>
+      <div class="hero-actions"><a href="#/packages" class="btn btn-primary">Browse Itineraries</a><a href="#/booking" class="btn btn-ghost">Start Planning →</a></div>
+      <div class="hero-stats"><div class="stat"><b>7</b><span>Signature Parks</span></div><div class="stat"><b>100%</b><span>Tailor-Made Routes</span></div><div class="stat"><b>1–6</b><span>Guests Per Vehicle</span></div></div>
+    </div></header>
+  <section class="view"><div class="wrap">
+    <div class="section-head"><div><span class="eyebrow">Popular Itineraries</span><h2>Where to go on your Tanzania safari</h2></div><p>Every package below is a starting point — dates, lodges and pace can all be adjusted once you tell us what you're after.</p></div>
+    <div class="pkg-grid">${getPackages().slice(0,6).map(pkgCardHTML).join("")}</div>
+  </div></section>
+  <section style="background:var(--bush-900); border-top:1px solid var(--line); border-bottom:1px solid var(--line);"><div class="wrap">
+    <div class="section-head"><div><span class="eyebrow">How Booking Works</span><h2>Simple, direct, no middlemen</h2></div></div>
+    <div class="pkg-grid">
+      <div><span class="eyebrow">01</span><h3>Choose a package</h3><p>Pick a ready-made itinerary or tell us your dates and interests and we'll shape one around them.</p></div>
+      <div><span class="eyebrow">02</span><h3>Fill in your details</h3><p>Share your travel dates, group size and contact details through our booking form.</p></div>
+      <div><span class="eyebrow">03</span><h3>Pay by bank transfer</h3><p>We'll show you our NMB bank account details to secure your booking, plus a WhatsApp line for any questions.</p></div>
+    </div></div></section>
+  <section><div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Ready when you are</span><h2>Let's plan your Tanzania safari</h2>
+    <p style="max-width:520px;margin:0 auto 28px;">Message us on WhatsApp for a quick chat, or fill in the booking form to get started.</p>
+    <div class="hero-actions" style="justify-content:center;"><a href="#/booking" class="btn btn-primary">Start a Booking</a><a id="wa-cta" class="btn btn-ghost" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+  </div></section>`;
+}
+function bindHome(){ document.getElementById("wa-cta").href=waLink("Hi Mark Safaris, I'd like to ask about a safari package."); }
+
+function viewPackages(){
+  return `<header style="padding:80px 0 20px;"><div class="wrap"><span class="eyebrow">All Itineraries</span><h1 style="font-size:clamp(2rem,4vw,3rem);">Tanzania national park packages</h1><p style="max-width:560px;">Serengeti, Ngorongoro, Tarangire, Manyara, Mikumi, Ruaha and a grand multi-park tour — every itinerary can be shortened, extended, or combined.</p></div></header>
+  <section class="view" style="padding-top:24px;"><div class="wrap"><div class="pkg-grid">${getPackages().map(pkgCardHTML).join("")}</div></div></section>`;
+}
+
+function viewPackageDetail(id){
+  const pkg=findPackage(id);
+  if(!pkg) return `<div class="wrap" style="padding:100px 0;text-align:center;"><h2>Package not found</h2><a class="btn btn-primary" href="#/packages">Back to all itineraries</a></div>`;
+  return `<header class="detail-hero" id="detail-hero-el" style="background-image:url('${pkg.image}')">
+    <div class="wrap"><span class="eyebrow">${esc(pkg.park)}</span><h1 style="font-size:clamp(2rem,4vw,3.4rem);">${esc(pkg.name)}</h1><p class="lede" style="max-width:600px;">${esc(pkg.tagline)}</p></div></header>
+  <section class="view"><div class="wrap two-col">
+    <div><h2>Overview</h2><p>${esc(pkg.description)}</p>
+      <h3 style="margin-top:36px;">Highlights</h3><ul class="highlight-list">${(pkg.highlights||[]).map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
+      <h3 style="margin-top:36px;">Day by day</h3>${trailHTML(pkg.itinerary||[])}</div>
+    <aside class="side-card"><span class="eyebrow">From</span><div class="price" style="font-size:2rem;">${fmtPrice(pkg.price)}<small style="display:block;">per person, sharing</small></div>
+      <div class="chip-list"><span class="chip">${pkg.days} day${pkg.days>1?"s":""} / ${pkg.nights} night${pkg.nights===1?"":"s"}</span><span class="chip">${esc(pkg.groupSize)}</span><span class="chip">${esc(pkg.bestTime)}</span></div>
+      <a class="btn btn-primary btn-wide" href="#/booking/${encodeURIComponent(pkg.id)}" style="margin-top:10px;">Book This Safari</a>
+      <a class="btn btn-ghost btn-wide" id="wa-ask" target="_blank" rel="noopener" style="margin-top:10px;">Ask on WhatsApp</a></aside>
+  </div></section>`;
+}
+function bindPackageDetail(id){
+  const pkg=findPackage(id); if(!pkg) return;
+  document.getElementById("wa-ask").href=waLink(`Hi Mark Safaris, I'm interested in the "${pkg.name}" package.`);
+  const probe=new Image(); probe.onerror=()=>{ const el=document.getElementById("detail-hero-el"); if(el) el.style.backgroundImage=`url('${PLACEHOLDER_IMG}')`; }; probe.src=pkg.image;
+}
+
+let booking={}, emailSentForStage={};
+function viewBooking(){
+  return `<header style="padding:64px 0 10px;"><div class="wrap"><span class="eyebrow">Booking</span><h1 style="font-size:clamp(1.9rem,4vw,2.8rem);">Reserve your safari</h1></div></header>
+  <section class="view" style="padding-top:20px;"><div class="wrap">
+    <div class="steps-nav"><span class="step" data-step="1">1. Your details</span><span class="step" data-step="2">2. Payment method</span><span class="step" data-step="3">3. Bank transfer details</span></div>
+    <div class="booking-panel" id="step-1"><h3>Tell us about your trip</h3><p style="margin-bottom:28px;">Fields marked with an asterisk (*) are required.</p>
+      <form id="details-form">
+        <div class="field"><label>Package *</label><select id="f-package" required></select></div>
+        <div class="field-row"><div class="field"><label>Full name *</label><input type="text" id="f-name" required></div><div class="field"><label>Email *</label><input type="email" id="f-email" required></div></div>
+        <div class="field-row"><div class="field"><label>Phone / WhatsApp *</label><input type="tel" id="f-phone" required></div><div class="field"><label>Number of travelers *</label><input type="number" id="f-travelers" min="1" value="2" required></div></div>
+        <div class="field-row"><div class="field"><label>Preferred start date</label><input type="date" id="f-date"></div><div class="field"><label>Country of residence</label><input type="text" id="f-country"></div></div>
+        <div class="field"><label>Special requests</label><textarea id="f-notes" placeholder="Dietary needs, honeymoon, balloon safari add-on, etc."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-wide">Continue to payment method →</button>
+      </form></div>
+    <div class="booking-panel" id="step-2" style="display:none;"><h3>Choose a payment method</h3><div id="summary-box" style="margin:20px 0 28px;"></div>
+      <div class="field"><label>Payment method *</label><select id="f-payment"><option value="bank_transfer">Bank Transfer (NMB Bank)</option></select></div>
+      <p style="font-size:.85rem;">We currently accept payment by direct bank transfer. Your safari specialist will confirm your booking once payment is received.</p>
+      <div style="display:flex; gap:14px; margin-top:10px;"><button class="btn btn-ghost" id="back-to-1">← Back</button><button class="btn btn-primary btn-wide" id="go-to-3">View bank transfer details →</button></div></div>
+    <div class="booking-panel" id="step-3" style="display:none;"><h3>Complete your payment by bank transfer</h3><div class="notice info" id="email-status"></div>
+      <p>Please transfer your deposit or full payment to the account below, and include your booking reference in the transfer description. Once sent, share your payment slip with us on WhatsApp or email so we can confirm your booking.</p>
+      <div class="bank-card">
+        <div class="bank-row"><span>Bank</span><span>${esc(SITE_CONFIG.bank.bankName)}</span></div>
+        <div class="bank-row"><span>Account Name</span><span>${esc(SITE_CONFIG.bank.accountName)}</span></div>
+        <div class="bank-row"><span>SWIFT Code</span><span>${esc(SITE_CONFIG.bank.swiftCode)}</span></div>
+        <div class="bank-row"><span>Routing Number</span><span>${esc(SITE_CONFIG.bank.routingNumber)}</span></div>
+        <div class="bank-row"><span>City</span><span>${esc(SITE_CONFIG.bank.city)}</span></div>
+        <div class="bank-row"><span>Booking Reference</span><span id="booking-ref"></span></div></div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;"><a class="btn btn-gold" id="wa-proof" target="_blank" rel="noopener">Send Payment Proof on WhatsApp</a><button class="btn btn-primary" id="confirm-sent">I've Made the Transfer</button><button class="btn btn-ghost" id="cancel-booking">Cancel Booking</button></div>
+      <div id="final-message" style="margin-top:24px;"></div></div>
+  </div></section>`;
+}
+function bindBooking(presetId){
+  booking={}; emailSentForStage={};
+  const select=document.getElementById("f-package"); const packages=getPackages();
+  select.innerHTML=packages.map(p=>`<option value="${p.id}">${esc(p.name)} — ${fmtPrice(p.price)}</option>`).join("");
+  if(presetId && packages.some(p=>p.id===presetId)) select.value=presetId;
+  document.getElementById("details-form").addEventListener("submit", e=>{
+    e.preventDefault();
+    booking={ packageId:select.value, name:document.getElementById("f-name").value.trim(), email:document.getElementById("f-email").value.trim(), phone:document.getElementById("f-phone").value.trim(), travelers:document.getElementById("f-travelers").value, date:document.getElementById("f-date").value, country:document.getElementById("f-country").value.trim(), notes:document.getElementById("f-notes").value.trim() };
+    goToStep(2); renderSummary();
+  });
+  document.getElementById("back-to-1").addEventListener("click", ()=>goToStep(1));
+  document.getElementById("go-to-3").addEventListener("click", ()=>{ goToStep(3); enterBankDetailsStep(); });
+  document.getElementById("confirm-sent").addEventListener("click", onConfirmSent);
+  document.getElementById("cancel-booking").addEventListener("click", onCancelBooking);
+}
+function goToStep(n){ [1,2,3].forEach(i=>{ document.getElementById("step-"+i).style.display=i===n?"block":"none"; const nav=document.querySelector(`.step[data-step="${i}"]`); nav.classList.toggle("active",i===n); nav.classList.toggle("done",i<n); }); window.scrollTo({top:0,behavior:"smooth"}); }
+function renderSummary(){ const pkg=findPackage(booking.packageId); document.getElementById("summary-box").innerHTML=`<div class="summary-row"><span>Package</span><span>${esc(pkg.name)}</span></div><div class="summary-row"><span>Traveler</span><span>${esc(booking.name)}</span></div><div class="summary-row"><span>Email</span><span>${esc(booking.email)}</span></div><div class="summary-row"><span>Phone</span><span>${esc(booking.phone)}</span></div><div class="summary-row"><span>Travelers</span><span>${esc(booking.travelers)}</span></div><div class="summary-row"><span>Preferred date</span><span>${esc(booking.date||"Flexible")}</span></div><div class="summary-row"><span>Est. total</span><span>${fmtPrice(pkg.price*Number(booking.travelers||1))}</span></div>`; }
+function makeBookingRef(){ return "MS-"+Date.now().toString(36).toUpperCase(); }
+function enterBankDetailsStep(){ if(!booking.ref) booking.ref=makeBookingRef(); document.getElementById("booking-ref").textContent=booking.ref; const pkg=findPackage(booking.packageId); document.getElementById("wa-proof").href=waLink(`Hi Mark Safaris, this is ${booking.name}. My booking reference is ${booking.ref} for the "${pkg.name}" package. Here is my payment proof:`); sendOwnerNotification("arrived"); }
+function onConfirmSent(){ sendOwnerNotification("confirmed"); document.getElementById("final-message").innerHTML=`<div class="notice ok">Thank you — we've noted that you've made the transfer. We'll confirm your booking shortly once it's received.</div>`; document.getElementById("confirm-sent").setAttribute("disabled","true"); document.getElementById("cancel-booking").setAttribute("disabled","true"); }
+function onCancelBooking(){ if(!confirm("Cancel this booking?")) return; sendOwnerNotification("cancelled"); document.getElementById("final-message").innerHTML=`<div class="notice warn">Your booking has been cancelled. No payment is required.</div>`; document.getElementById("confirm-sent").setAttribute("disabled","true"); document.getElementById("cancel-booking").setAttribute("disabled","true"); }
+function stageLabel(s){ return {arrived:"New booking — awaiting payment", confirmed:"Booking — customer says paid", cancelled:"Booking cancelled by customer"}[s]||s; }
+function sendOwnerNotification(stage){
+  if(emailSentForStage[stage]) return; emailSentForStage[stage]=true;
+  const pkg=findPackage(booking.packageId); const statusEl=document.getElementById("email-status");
+  const params={ to_email:SITE_CONFIG.ownerEmail, subject:`[${stageLabel(stage)}] ${booking.ref} — ${booking.name}`, stage:stageLabel(stage), booking_ref:booking.ref, customer_name:booking.name, customer_email:booking.email, customer_phone:booking.phone, package_name:pkg.name, travelers:booking.travelers, preferred_date:booking.date||"Flexible", country:booking.country||"—", notes:booking.notes||"—", est_total:fmtPrice(pkg.price*Number(booking.travelers||1)) };
+  if(emailjsIsConfigured()){
+    emailjs.init(SITE_CONFIG.emailjs.publicKey);
+    emailjs.send(SITE_CONFIG.emailjs.serviceId, SITE_CONFIG.emailjs.bookingTemplateId, params)
+      .then(()=>{ if(statusEl) statusEl.textContent="We've been notified of your booking. Reference: "+booking.ref; })
+      .catch(()=>{ if(statusEl) statusEl.textContent="Notification could not be sent automatically — please also message us on WhatsApp with your reference: "+booking.ref; });
+  } else {
+    const body=Object.entries(params).map(([k,v])=>`${k}: ${v}`).join("%0D%0A");
+    if(statusEl) statusEl.textContent="Automatic email isn't configured yet — please also confirm via WhatsApp with your reference: "+booking.ref;
+    if(stage==="arrived"){ const a=document.createElement("a"); a.href=`mailto:${SITE_CONFIG.ownerEmail}?subject=${encodeURIComponent(params.subject)}&body=${body}`; a.target="_blank"; a.click(); }
+  }
+}
+
+function viewContact(){
+  return `<header style="padding:64px 0 10px;"><div class="wrap"><span class="eyebrow">Get in touch</span><h1 style="font-size:clamp(1.9rem,4vw,2.8rem);">Questions before you book?</h1><p style="max-width:520px;">Send us a message and we'll reply by email, or message us directly on WhatsApp for a faster answer.</p></div></header>
+  <section class="view" style="padding-top:20px;"><div class="wrap contact-grid">
+    <div><div class="booking-panel" style="max-width:none;"><h3>Send a message</h3><div id="contact-status" style="margin:12px 0;"></div>
+      <form id="contact-form">
+        <div class="field-row"><div class="field"><label>Full name *</label><input type="text" id="c-name" required></div><div class="field"><label>Email *</label><input type="email" id="c-email" required></div></div>
+        <div class="field"><label>Phone / WhatsApp</label><input type="tel" id="c-phone"></div>
+        <div class="field"><label>Message *</label><textarea id="c-message" required placeholder="Tell us about the trip you're planning..."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-wide">Send Message</button>
+      </form></div></div>
+    <div><div class="contact-card"><h4>Email</h4><a href="mailto:safarismark@gmail.com">safarismark@gmail.com</a></div>
+      <div class="contact-card"><h4>WhatsApp</h4><a id="wa-direct" target="_blank" rel="noopener">+255 746 239 498</a></div>
+      <div class="contact-card"><h4>Based in</h4><p style="margin:0;">Arusha, Tanzania</p></div></div>
+  </div></section>`;
+}
+function bindContact(){
+  document.getElementById("wa-direct").href=waLink("Hi Mark Safaris, I have a question about a safari.");
+  document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    const data={ to_email:SITE_CONFIG.ownerEmail, subject:"New website enquiry", customer_name:document.getElementById("c-name").value.trim(), customer_email:document.getElementById("c-email").value.trim(), customer_phone:document.getElementById("c-phone").value.trim()||"—", message:document.getElementById("c-message").value.trim() };
+    const statusEl=document.getElementById("contact-status");
+    if(emailjsIsConfigured()){
+      emailjs.init(SITE_CONFIG.emailjs.publicKey);
+      emailjs.send(SITE_CONFIG.emailjs.serviceId, SITE_CONFIG.emailjs.contactTemplateId, data)
+        .then(()=>{ statusEl.innerHTML='<div class="notice ok">Message sent — we will reply by email soon.</div>'; e.target.reset(); })
+        .catch(()=>{ statusEl.innerHTML='<div class="notice warn">Could not send automatically — please message us on WhatsApp instead.</div>'; });
+    } else {
+      const body=Object.entries(data).map(([k,v])=>`${k}: ${v}`).join("%0D%0A");
+      window.open(`mailto:${SITE_CONFIG.ownerEmail}?subject=${encodeURIComponent(data.subject)}&body=${body}`, "_blank");
+      statusEl.innerHTML='<div class="notice info">Opening your email app to send this to us — you can also reach us on WhatsApp.</div>';
+    }
+  });
+}
+
+let editingId=null;
+function isUnlocked(){ return sessionStorage.getItem("markSafarisAdmin")==="yes"; }
+function viewAdmin(){
+  if(!isUnlocked()){
+    return `<div class="lock-screen"><span class="eyebrow">Admin Access</span><h2>Enter admin password</h2><div class="field"><input type="password" id="pw-input" placeholder="Password"></div><button class="btn btn-primary btn-wide" id="pw-submit">Unlock</button><p id="pw-error" style="color:var(--clay-bright); font-size:.85rem;"></p></div>`;
+  }
+  return `<header style="padding:48px 0 0;"><div class="wrap"><span class="eyebrow">Admin</span><h1 style="font-size:clamp(1.8rem,3.5vw,2.6rem);">Manage packages</h1>
+    <p style="max-width:640px;">Edit photos, prices and descriptions below. To change a photo, just type the filename of a jpg/png you've placed in the <code>images</code> folder (e.g. <code>images/serengeti.jpg</code>). Changes save to this browser instantly — use Export to hand an updated file to your developer.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin:20px 0 8px;">
+      <button class="btn btn-primary" id="add-pkg">+ Add Package</button><button class="btn btn-ghost" id="export-json">Export JSON</button>
+      <label class="btn btn-ghost" style="cursor:pointer;">Import JSON<input type="file" id="import-json" accept="application/json" style="display:none;"></label>
+      <button class="btn btn-ghost" id="reset-defaults">Reset to Defaults</button><button class="btn btn-ghost" id="logout">Log Out</button></div>
+    <div class="notice info">This admin panel is protected by a simple password meant to keep casual visitors out — it is not strong security. Password-protect this page at your hosting level before relying on it for sensitive changes.</div>
+  </div></header>
+  <section class="view"><div class="wrap"><table class="admin-table"><thead><tr><th>Photo</th><th>Package</th><th>Park</th><th>Price</th><th>Days</th><th></th></tr></thead><tbody id="pkg-rows"></tbody></table></div></section>
+  <section id="edit-section" style="display:none; border-top:1px solid var(--line);"><div class="wrap"><h2 id="edit-heading">Edit package</h2><div class="booking-panel" style="max-width:none;">
+    <div class="field-row"><div class="field"><label>Package name *</label><input id="e-name"></div><div class="field"><label>Park *</label><input id="e-park"></div></div>
+    <div class="field-row"><div class="field"><label>Price (USD per person) *</label><input type="number" id="e-price"></div><div class="field"><label>Days *</label><input type="number" id="e-days"></div></div>
+    <div class="field-row"><div class="field"><label>Nights</label><input type="number" id="e-nights"></div><div class="field"><label>Group size</label><input id="e-group"></div></div>
+    <div class="field"><label>Best time to visit</label><input id="e-besttime"></div>
+    <div class="field"><label>Photo filename (in the images folder) or full URL</label><input id="e-image" placeholder="images/serengeti.jpg"></div>
+    <div class="field"><label>Tagline</label><input id="e-tagline"></div>
+    <div class="field"><label>Description</label><textarea id="e-description"></textarea></div>
+    <div class="field"><label>Highlights (one per line)</label><textarea id="e-highlights"></textarea></div>
+    <div class="field"><label>Itinerary — one day per line, format: Title | Description</label><textarea id="e-itinerary" style="min-height:160px;"></textarea></div>
+    <div style="display:flex; gap:12px;"><button class="btn btn-primary" id="save-pkg">Save Changes</button><button class="btn btn-ghost" id="cancel-edit">Cancel</button><button class="btn btn-ghost" id="delete-pkg" style="margin-left:auto; border-color:var(--clay);">Delete Package</button></div>
+  </div></div></section>`;
+}
+function bindAdmin(){
+  if(!isUnlocked()){ document.getElementById("pw-submit").addEventListener("click", tryUnlock); document.getElementById("pw-input").addEventListener("keydown", e=>{ if(e.key==="Enter") tryUnlock(); }); return; }
+  renderRows();
+  document.getElementById("add-pkg").addEventListener("click", ()=>openEdit(null));
+  document.getElementById("cancel-edit").addEventListener("click", ()=>{ document.getElementById("edit-section").style.display="none"; editingId=null; });
+  document.getElementById("save-pkg").addEventListener("click", saveEdit);
+  document.getElementById("delete-pkg").addEventListener("click", deleteEdit);
+  document.getElementById("export-json").addEventListener("click", exportJSON);
+  document.getElementById("import-json").addEventListener("change", importJSON);
+  document.getElementById("reset-defaults").addEventListener("click", ()=>{ if(!confirm("Reset all packages to the original defaults?")) return; localStorage.removeItem("markSafarisPackages"); renderRows(); });
+  document.getElementById("logout").addEventListener("click", ()=>{ sessionStorage.removeItem("markSafarisAdmin"); render(); });
+}
+function tryUnlock(){ const val=document.getElementById("pw-input").value; if(val===SITE_CONFIG.adminPassword){ sessionStorage.setItem("markSafarisAdmin","yes"); render(); } else { document.getElementById("pw-error").textContent="Incorrect password."; } }
+function renderRows(){
+  const list=getPackages();
+  document.getElementById("pkg-rows").innerHTML=list.map(p=>`<tr><td><img class="admin-thumb" src="${p.thumb||p.image}" alt="" onerror="${onImgErr()}"></td><td>${esc(p.name)}<br><span class="pill gold">${esc(p.id)}</span></td><td>${esc(p.park)}</td><td>${fmtPrice(p.price)}</td><td>${p.days}d / ${p.nights}n</td><td><button class="btn btn-ghost" data-edit="${p.id}">Edit</button></td></tr>`).join("");
+  document.querySelectorAll("[data-edit]").forEach(btn=>btn.addEventListener("click", ()=>openEdit(btn.getAttribute("data-edit"))));
+}
+function slugify(s){ return s.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,""); }
+function openEdit(id){
+  const list=getPackages(); let pkg=list.find(p=>p.id===id); const isNew=!pkg;
+  if(isNew){ pkg={ id:"new-package-"+Date.now(), name:"New Package", park:"", price:0, days:1, nights:0, groupSize:"1–6 travelers", bestTime:"", image:"", thumb:"", tagline:"", description:"", highlights:[], itinerary:[{day:1,title:"Arrival",text:""}] }; }
+  editingId=pkg.id;
+  document.getElementById("edit-heading").textContent=isNew?"Add package":"Edit package";
+  document.getElementById("e-name").value=pkg.name; document.getElementById("e-park").value=pkg.park;
+  document.getElementById("e-price").value=pkg.price; document.getElementById("e-days").value=pkg.days; document.getElementById("e-nights").value=pkg.nights;
+  document.getElementById("e-group").value=pkg.groupSize; document.getElementById("e-besttime").value=pkg.bestTime;
+  document.getElementById("e-image").value=pkg.image||""; document.getElementById("e-tagline").value=pkg.tagline;
+  document.getElementById("e-description").value=pkg.description;
+  document.getElementById("e-highlights").value=(pkg.highlights||[]).join("\n");
+  document.getElementById("e-itinerary").value=(pkg.itinerary||[]).map(d=>`${d.title} | ${d.text}`).join("\n");
+  document.getElementById("edit-section").style.display="block"; document.getElementById("edit-section").scrollIntoView({behavior:"smooth"});
+}
+function saveEdit(){
+  const list=getPackages(); const idx=list.findIndex(p=>p.id===editingId); const name=document.getElementById("e-name").value.trim();
+  const itinerary=document.getElementById("e-itinerary").value.split("\n").map(s=>s.trim()).filter(Boolean).map((line,i)=>{ const [title,...rest]=line.split("|"); return {day:i+1, title:(title||"").trim(), text:rest.join("|").trim()}; });
+  const imageVal=document.getElementById("e-image").value.trim();
+  const updated={ id: idx>-1?editingId:(slugify(name)||editingId), name, park:document.getElementById("e-park").value.trim(), price:Number(document.getElementById("e-price").value)||0, days:Number(document.getElementById("e-days").value)||1, nights:Number(document.getElementById("e-nights").value)||0, groupSize:document.getElementById("e-group").value.trim(), bestTime:document.getElementById("e-besttime").value.trim(), image:imageVal, thumb:imageVal, tagline:document.getElementById("e-tagline").value.trim(), description:document.getElementById("e-description").value.trim(), highlights:document.getElementById("e-highlights").value.split("\n").map(s=>s.trim()).filter(Boolean), itinerary: itinerary.length?itinerary:[{day:1,title:"Day 1",text:""}] };
+  if(idx>-1) list[idx]=updated; else list.push(updated);
+  savePackages(list); renderRows(); document.getElementById("edit-section").style.display="none"; editingId=null;
+}
+function deleteEdit(){ if(!confirm("Delete this package?")) return; const list=getPackages().filter(p=>p.id!==editingId); savePackages(list); renderRows(); document.getElementById("edit-section").style.display="none"; editingId=null; }
+function exportJSON(){ const blob=new Blob([JSON.stringify(getPackages(),null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="mark-safaris-packages.json"; a.click(); }
+function importJSON(e){ const file=e.target.files[0]; if(!file) return; const reader=new FileReader(); reader.onload=()=>{ try{ const data=JSON.parse(reader.result); if(!Array.isArray(data)) throw new Error("not an array"); savePackages(data); renderRows(); alert("Import successful."); } catch(err){ alert("Could not read that file."); } }; reader.readAsText(file); }
+
+document.getElementById("nav-toggle").addEventListener("click", ()=>document.getElementById("nav-links").classList.toggle("open"));
+window.addEventListener("hashchange", render);
+window.addEventListener("DOMContentLoaded", render);
 </script>
 </body>
 </html>
